@@ -10,6 +10,7 @@ import logging
 
 logging.disable()
 
+
 class Air_pyrifier_server(Config):
     def __init__(self):
         self.host = socket.gethostbyname(Config.get_purifier_address())

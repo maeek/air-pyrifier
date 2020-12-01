@@ -15,6 +15,7 @@ from coapthon import defines
 from coapthon.client.helperclient import HelperClient
 from Cryptodome.Cipher import AES
 from Cryptodome.Util.Padding import pad, unpad
+from helpers.config import Config
 
 
 class WrongDigestException(Exception):
@@ -76,7 +77,7 @@ class CoAPAirClient(HTTPAirClientBase):
     """
     TODO: Update - CoAP Air Client.
     """
-    SECRET_KEY = "JiangPan" # TODO: move to env conf
+    SECRET_KEY = Config.get_secret()  # TODO: move to env conf
 
     def __init__(self, host, port=5683, debug=False):
         super().__init__(host, port, debug)

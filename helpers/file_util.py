@@ -1,6 +1,7 @@
 import os
 import json
 
+
 class File_util:
     @staticmethod
     def get_json_file(file_path):
@@ -19,7 +20,6 @@ class File_util:
 
         else:
             raise Exception(f'File not found, path: {file_path}')
-
 
     @staticmethod
     def _check_file(file_path):
