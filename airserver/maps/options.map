@@ -1,0 +1,34 @@
+mapped;org;value type requirement, default string;comment
+name;name;;just hostname
+fan;om;;fan speed
+pwr;pwr;;power
+lock;cl;bool;child lock
+timer;dt;int;set timer to automatically shutdown
+func;func;;func
+hud;ddp;;what to be shown on hud
+ring;aqil;int;ring brightness
+menu;uil;;menu brightness
+mode;mode;;mode
+rhset;rhset;int;target humidity
+temp;temp;;temp
+pm25;pm25;;pm25
+rh;rh;;humidity
+wl;wl;;water level
+allergen;iaql;;allergen index
+aqit;aqit;int;Air quality notification threshold
+hepa_type;fltt1;;HEPA filter type
+carbon_type;fltt2;;Active carbon filter type
+shallow_clean;fltsts0;;Pre-filter and Wick clean
+hepa_replace;fltsts1;;hepa replace
+carbon_replace;fltsts2;;carbon replace
+wick_replace;wicksts;;ewaporation?
+wifi;range;;wifi name
+uptime;Runtime;;uptime
+wifiver;WifiVersion;;wifi ver?
+productid;ProductId;;product id uuid
+deviceid;DeviceId;;device id uuid
+statustype;StatusType;;
+connecttype;ConnectType;;
+model;type;;name of the model family
+id;modelid;;name of the exact model
+version;swversion;;version of the firmware

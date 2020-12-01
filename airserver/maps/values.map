@@ -1,0 +1,4 @@
+mapped option;myval1;orgval2;
+mode;auto;P;allergen;A;sleep;S;manual;M;turbo;T
+func;p;P;ph;PH
+hud;iai;0;pm25;1;gas;2;humidity;3

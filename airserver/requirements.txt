@@ -1,0 +1,7 @@
+# airhelper
+PyYAML
+CoAPthon3
+pycryptodomex
+
+# airserver
+websockets
