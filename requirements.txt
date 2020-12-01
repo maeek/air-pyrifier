@@ -5,3 +5,7 @@ pycryptodomex
 
 # airserver
 websockets
+websocket-client
+
+# dev
+autopep8

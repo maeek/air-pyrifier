@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from helpers.air_helper import Airclient
 import yaml
 import socket
 import asyncio
@@ -7,23 +8,23 @@ import websockets
 import logging
 logging.disable()
 
-from airhelper import airclient
 
-airpurifier = socket.gethostbyname('mico.internal.suchanecki.me')
+airpurifier = socket.gethostbyname('airpy.internal.suchanecki.me')
 listenaddress = '0.0.0.0'
 listenport = '8765'
 
-ac = airclient(airpurifier)
+ac = Airclient(airpurifier)
+
 
 async def dispatcher(websocket, path):
     frame = await websocket.recv()
-    payload = yaml.load(frame,Loader=yaml.BaseLoader)
+    payload = yaml.load(frame, Loader=yaml.BaseLoader)
 
     if payload['action'] == 'set':
-      result = ac.set(payload['message']) # nr of tries
+        result = ac.set(payload['message'])  # nr of tries
 
     elif payload['action'] == 'get':
-      result = ac.get(payload['message']) # purifier data
+        result = ac.get(payload['message'])  # purifier data
 
     await websocket.send(yaml.dump(result))
 

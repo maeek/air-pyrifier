@@ -3,9 +3,9 @@
 import os
 import sys
 import time
-from airhelper import airclient
+from airhelper import Airclient
 
-ac = airclient('10.20.0.200')
+ac = Airclient('10.20.0.200')
 
 # Just convertings args to dictionary for helper
 def list_to_dict(args):

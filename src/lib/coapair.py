@@ -90,15 +90,18 @@ class CoAPAirClient(HTTPAirClientBase):
         return HelperClient(server=(host, port))
 
     def _sync(self):
-        self.syncrequest = binascii.hexlify(os.urandom(4)).decode("utf8").upper()
-        self.client_key = self.client.post("/sys/dev/sync", self.syncrequest).payload
+        self.syncrequest = binascii.hexlify(
+            os.urandom(4)).decode("utf8").upper()
+        self.client_key = self.client.post(
+            "/sys/dev/sync", self.syncrequest).payload
 
     def _decrypt_payload(self, encrypted_payload):
         encoded_counter = encrypted_payload[0:8]
         aes = self._handle_AES(encoded_counter)
         encoded_message = encrypted_payload[8:-64].upper()
         digest = encrypted_payload[-64:]
-        calculated_digest = self._create_digest(encoded_counter, encoded_message)
+        calculated_digest = self._create_digest(
+            encoded_counter, encoded_message)
         if digest != calculated_digest:
             raise WrongDigestException
         decoded_message = aes.decrypt(bytes.fromhex(encoded_message))
@@ -109,7 +112,8 @@ class CoAPAirClient(HTTPAirClientBase):
         self._update_client_key()
         aes = self._handle_AES(self.client_key)
         paded_message = pad(bytes(payload.encode("utf8")), 16, style="pkcs7")
-        encoded_message = binascii.hexlify(aes.encrypt(paded_message)).decode("utf8").upper()
+        encoded_message = binascii.hexlify(
+            aes.encrypt(paded_message)).decode("utf8").upper()
         digest = self._create_digest(self.client_key, encoded_message)
         return self.client_key + encoded_message + digest
 
@@ -125,12 +129,14 @@ class CoAPAirClient(HTTPAirClientBase):
         self.client_key = "{:x}".format(int(self.client_key, 16) + 1).upper()
 
     def _handle_AES(self, id):
-        key_and_iv = hashlib.md5((self.SECRET_KEY + id).encode()).hexdigest().upper()
+        key_and_iv = hashlib.md5(
+            (self.SECRET_KEY + id).encode()).hexdigest().upper()
         half_keylen = len(key_and_iv) // 2
         secret_key = key_and_iv[0:half_keylen]
         iv = key_and_iv[half_keylen:]
         return AES.new(
-            bytes(secret_key.encode("utf8")), AES.MODE_CBC, bytes(iv.encode("utf8"))
+            bytes(secret_key.encode("utf8")), AES.MODE_CBC, bytes(
+                iv.encode("utf8"))
         )
 
     def _get(self):
