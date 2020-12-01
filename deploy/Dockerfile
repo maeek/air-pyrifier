@@ -9,4 +9,4 @@ RUN apk add --no-cache gcc musl-dev git && \
 WORKDIR /srv
 USER 1000
 
-CMD ["./src/air_server.py"]
+CMD ["./air_pyrifier.py", "listen"]

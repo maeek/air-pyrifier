@@ -1,5 +1,3 @@
-"""CoAP Air Client."""
-
 # credits: https://pypi.org/project/py-air-control/
 # credits: https://github.com/Tanganelli/CoAPthon
 
@@ -75,7 +73,10 @@ class HTTPAirClientBase(ABC):
 
 
 class CoAPAirClient(HTTPAirClientBase):
-    SECRET_KEY = "JiangPan"
+    """
+    TODO: Update - CoAP Air Client.
+    """
+    SECRET_KEY = "JiangPan" # TODO: move to env conf
 
     def __init__(self, host, port=5683, debug=False):
         super().__init__(host, port, debug)
