@@ -1,6 +1,6 @@
 # airhelper
 PyYAML
-CoAPthon3
+git+https://github.com/Tanganelli/CoAPthon3#egg=CoAPthon3
 pycryptodomex
 
 # airserver
