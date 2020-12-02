@@ -15,9 +15,10 @@ class Air_pyrifier_client(Config):
 
     def __init__(self):
         self.airserver_ws_address = Config.get_server_ws_address()
+        self.airserver_ws_port = Config.get_server_listen_port()
 
     def connect(self):
-        self.ws = create_connection(self.airserver_ws_address)
+        self.ws = create_connection(f'ws://{self.airserver_ws_address}:{self.airserver_ws_port}')
 
     def disconnect(self):
         self.ws.close()
@@ -34,7 +35,7 @@ class Air_pyrifier_client(Config):
     def set(self, options):
         self.connect()
 
-        results = self._send_to_server('set', self._list_to_dict(options))
+        results = self._send_to_server('set', Air_pyrifier_client._list_to_dict(options))
 
         self.disconnect()
 
