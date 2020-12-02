@@ -6,6 +6,7 @@ import time
 import yaml
 from websocket import create_connection
 from helpers.config import Config
+from helpers.maps_util import Maps_util
 
 
 class Air_pyrifier_client(Config):
@@ -35,7 +36,7 @@ class Air_pyrifier_client(Config):
     def set(self, options):
         self.connect()
 
-        results = self._send_to_server('set', Air_pyrifier_client._list_to_dict(options))
+        results = self._send_to_server('set', Maps_util.list_to_dict(options))
 
         self.disconnect()
 
@@ -49,17 +50,6 @@ class Air_pyrifier_client(Config):
         self.disconnect()
 
         return results
-
-    @staticmethod
-    def _list_to_dict(args):
-        options = {}
-        for index in range(len(args)):
-            if index % 2 == 0:
-                try:
-                    options[args[index]] = args[index+1]
-                except IndexError:
-                    pass
-        return options
 
     def _send_to_server(self, action, message):
         payload = yaml.dump({'action': action, 'message': message})

@@ -3,12 +3,7 @@ import sys
 from lib.coapair import CoAPAirClient
 from helpers.maps_util import Maps_util
 
-# map files location
-# options_map_file = f'{sys.path[0]}/resources/options.map'
-# values_map_file = f'{sys.path[0]}/resources/values.map'
-
 # map files config
-# csv_indicator = ';'
 int_requirement = 'int'
 bool_requirement = 'bool'
 

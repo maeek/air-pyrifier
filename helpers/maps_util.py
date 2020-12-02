@@ -14,6 +14,17 @@ class Maps_util(File_util):
     VALUES_MAP_DICT = {'out': {}, 'in': {}}
 
     @staticmethod
+    def list_to_dict(args):
+        options = {}
+        for index in range(len(args)):
+            if index % 2 == 0:
+                try:
+                    options[args[index]] = args[index+1]
+                except IndexError:
+                    pass
+        return options
+
+    @staticmethod
     def get_options():
         options_path = os.path.join(Maps_util.RESOURCES_PATH, Maps_util.OPTIONS_MAP_PATH)
 
