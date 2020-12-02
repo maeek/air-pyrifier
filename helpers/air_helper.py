@@ -56,6 +56,7 @@ class Airclient():
         Updates air purifier config
 
         @param values: list of options to update
+        TODO: update
         """
         correct_values = self._map_options('out', values)
 
@@ -69,6 +70,7 @@ class Airclient():
         return tries  # return number of tries
 
     def _map_options(self, direction, options):
+        # TODO: move to maps util
         mapped_opts = {}
         for option in options:
             mapped_option = self._map_opt(direction, option)

@@ -5,8 +5,8 @@ import os
 import pprint
 import sys
 import time
-from scripts.air_pyrifier_server import Air_pyrifier_server
-from scripts.air_pyrifier_client import Air_pyrifier_client
+from components.air_pyrifier_server import Air_pyrifier_server
+from components.air_pyrifier_client import Air_pyrifier_client
 
 pp = pprint.PrettyPrinter(indent=4)
 
@@ -14,7 +14,7 @@ VERSION = '1.0.0'
 
 try:
     if sys.argv[1] == 'listen':
-        Air_pyrifier_server().run()
+        Air_pyrifier_server().listen()
 
     elif sys.argv[1] == 'get':
         options = sys.argv[2:]

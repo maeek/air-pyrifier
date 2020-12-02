@@ -18,7 +18,7 @@ class Air_pyrifier_server(Config):
         self.listenport = Config.get_server_listen_port()
         self.airclient = Airclient(self.host)
 
-    def run(self):
+    def listen(self):
         self.server = websockets.serve(self._dispatcher, self.listenaddress, self.listenport)
 
         print('starting server')
